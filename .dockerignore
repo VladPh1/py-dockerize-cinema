@@ -1,0 +1,11 @@
+.git
+.gitignore
+.dockerignore
+__pycache__
+*.pyc
+*.log
+.vscode/
+venv/
+env/
+/files/media
+/local_settings.py
