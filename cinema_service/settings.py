@@ -32,7 +32,7 @@ SECRET_KEY = (
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost", "*"]
 
@@ -142,7 +142,7 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/app/static/"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = "/files/media"
