@@ -14,6 +14,8 @@ from datetime import timedelta
 import environ
 from pathlib import Path
 
+from django.template.context_processors import media
+
 env = environ.Env(
     DEBUG=(bool, False)
 )
@@ -94,11 +96,11 @@ WSGI_APPLICATION = "cinema_service.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ["POSTGRES_DB"],
-        "USER": os.environ["POSTGRES_USER"],
-        "PASSWORD": os.environ["POSTGRES_PASSWORD"],
-        "HOST": os.environ["POSTGRES_HOST"],
-        "PORT": os.environ["POSTGRES_PORT"],
+        "NAME": env("POSTGRES_DB", default="cinema"),
+        "USER": env("POSTGRES_USER", default="cinema"),
+        "PASSWORD": env("POSTGRES_PASSWORD", default="cinema"),
+        "HOST": env("POSTGRES_HOST", default="db"),
+        "PORT": env.int("POSTGRES_PORT", default="5432"),
     }
 }
 
@@ -145,7 +147,10 @@ USE_TZ = False
 STATIC_URL = "/app/static/"
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "/files/media"
+
+MEDIA_ROOT = "/vol/web/media"
+
+STATIC_ROOT = "/vol/web/static"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

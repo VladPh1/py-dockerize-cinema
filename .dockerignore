@@ -9,3 +9,4 @@ venv/
 env/
 /files/media
 /local_settings.py
+.env
